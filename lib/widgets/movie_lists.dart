@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:imdb_api_hackathon/models/movie_model.dart';
 import 'package:imdb_api_hackathon/pages/movie_details_page.dart';
@@ -11,17 +13,14 @@ class MovieList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const double tileHeight=280;
+    const double tileWidth=tileHeight/4.0*3;
     return Column(
       children: [
         Container(
-<<<<<<< HEAD
-          height: 350,
-    
-=======
-          height: 400,
->>>>>>> a9e92a4130d3d867dae631dae9bc4c7ab39ee91a
+          height: tileHeight+100,
           child: ListView.builder(
-            scrollDirection: Axis.vertical,
+            scrollDirection: Axis.horizontal,
             shrinkWrap: true,
             itemCount: searchModel.results.length,
             physics: ScrollPhysics(),
@@ -52,52 +51,38 @@ class MovieList extends StatelessWidget {
                       }));
                 },
                 child: Card(
-<<<<<<< HEAD
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   shape:
                       RoundedRectangleBorder(borderRadius: BorderRadius.zero),
                   elevation: 2,
                   child: Container(
+                    height:tileHeight+45,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Image.network(
-                          searchModel.results.elementAt(index).image,
-                          fit: BoxFit.fill,
-                          height: 290,
-                          width: 220,
-=======
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  elevation: 2,
-                  child: Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(15.0),
-                          child: Image.network(
-                            searchModel.results.elementAt(index).image,
-                            fit: BoxFit.fill,
-                            height: 150,
-                            width: 100,
-                          ),
->>>>>>> a9e92a4130d3d867dae631dae9bc4c7ab39ee91a
-                        ),
+                          Image.network(
+                              searchModel.results.elementAt(index).image,
+                              fit: BoxFit.fill,
+                              height:tileHeight.toDouble(),
+                              width:tileWidth
+                            ),
                         SizedBox(width: 10),
                         Flexible(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '${searchModel.results.elementAt(index).title} ${searchModel.results.elementAt(index).description}',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 20),
-                              ),
-                              Text(
-                                  '${searchModel.results.elementAt(index).genres} • ${searchModel.results.elementAt(index).runtimeStr}'),
-                            ],
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints.tightFor(width:tileWidth),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '${searchModel.results.elementAt(index).title} ${searchModel.results.elementAt(index).description}',
+                                  style: TextStyle(
+                                    //taking the 15px as reference font size when it is at 100px and increment the the font size by 1 every single 50 increment in tileheight
+                                      fontWeight: FontWeight.bold, fontSize: (15+max(0,(tileHeight-100)/50).truncate()).toDouble()),
+                                ),
+                                Text(
+                                    '${searchModel.results.elementAt(index).genres} • ${searchModel.results.elementAt(index).runtimeStr}'),
+                              ],
+                            ),
                           ),
                         )
                       ],

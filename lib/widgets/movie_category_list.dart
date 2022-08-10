@@ -11,8 +11,7 @@ class MovieCategoryList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
+    return 
         Container(
           height: 200,
           child: ListView.builder(
@@ -79,9 +78,6 @@ class MovieCategoryList extends StatelessWidget {
                 ),
               );
             },
-          ),
-        ),
-      ],
-    );
+          ));
   }
 }
