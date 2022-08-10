@@ -14,10 +14,14 @@ class MovieList extends StatelessWidget {
     return Column(
       children: [
         Container(
+<<<<<<< HEAD
           height: 350,
     
+=======
+          height: 400,
+>>>>>>> a9e92a4130d3d867dae631dae9bc4c7ab39ee91a
           child: ListView.builder(
-            scrollDirection: Axis.horizontal,
+            scrollDirection: Axis.vertical,
             shrinkWrap: true,
             itemCount: searchModel.results.length,
             physics: ScrollPhysics(),
@@ -48,6 +52,7 @@ class MovieList extends StatelessWidget {
                       }));
                 },
                 child: Card(
+<<<<<<< HEAD
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   shape:
                       RoundedRectangleBorder(borderRadius: BorderRadius.zero),
@@ -61,11 +66,40 @@ class MovieList extends StatelessWidget {
                           fit: BoxFit.fill,
                           height: 290,
                           width: 220,
+=======
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  elevation: 2,
+                  child: Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(15.0),
+                          child: Image.network(
+                            searchModel.results.elementAt(index).image,
+                            fit: BoxFit.fill,
+                            height: 150,
+                            width: 100,
+                          ),
+>>>>>>> a9e92a4130d3d867dae631dae9bc4c7ab39ee91a
                         ),
-                        Text(
-                            '${searchModel.results.elementAt(index).title} ${searchModel.results.elementAt(index).description}'),
-                        Text(
-                            '${searchModel.results.elementAt(index).genres} • ${searchModel.results.elementAt(index).runtimeStr}'),
+                        SizedBox(width: 10),
+                        Flexible(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '${searchModel.results.elementAt(index).title} ${searchModel.results.elementAt(index).description}',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20),
+                              ),
+                              Text(
+                                  '${searchModel.results.elementAt(index).genres} • ${searchModel.results.elementAt(index).runtimeStr}'),
+                            ],
+                          ),
+                        )
                       ],
                     ),
                   ),
