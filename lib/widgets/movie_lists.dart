@@ -11,17 +11,8 @@ class MovieList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-<<<<<<< HEAD
-          height: 350,
-    
-=======
-          height: 400,
->>>>>>> a9e92a4130d3d867dae631dae9bc4c7ab39ee91a
-          child: ListView.builder(
-            scrollDirection: Axis.vertical,
+    return  ListView.builder(
+            scrollDirection: Axis.horizontal,
             shrinkWrap: true,
             itemCount: searchModel.results.length,
             physics: ScrollPhysics(),
@@ -51,64 +42,47 @@ class MovieList extends StatelessWidget {
                         // 'starList': searchModel.results.elementAt(index).starList,
                       }));
                 },
-                child: Card(
-<<<<<<< HEAD
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  shape:
-                      RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-                  elevation: 2,
-                  child: Container(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Image.network(
-                          searchModel.results.elementAt(index).image,
-                          fit: BoxFit.fill,
-                          height: 290,
-                          width: 220,
-=======
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  elevation: 2,
-                  child: Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(15.0),
-                          child: Image.network(
+                child: Container(
+                  height: 300,
+                  width: 220,
+                  child: Card(
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    shape:
+                        RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+                    elevation: 2,
+                    child: Container(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Image.network(
                             searchModel.results.elementAt(index).image,
                             fit: BoxFit.fill,
-                            height: 150,
-                            width: 100,
+                            height: 100,
+                            width: 220,
                           ),
->>>>>>> a9e92a4130d3d867dae631dae9bc4c7ab39ee91a
-                        ),
-                        SizedBox(width: 10),
-                        Flexible(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '${searchModel.results.elementAt(index).title} ${searchModel.results.elementAt(index).description}',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 20),
-                              ),
-                              Text(
-                                  '${searchModel.results.elementAt(index).genres} • ${searchModel.results.elementAt(index).runtimeStr}'),
-                            ],
-                          ),
-                        )
-                      ],
+                          SizedBox(width: 10),
+                          Flexible(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '${searchModel.results.elementAt(index).title} ${searchModel.results.elementAt(index).description}',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold, fontSize: 20),
+                                ),
+                                Text(
+                                    '${searchModel.results.elementAt(index).genres} • ${searchModel.results.elementAt(index).runtimeStr}'),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
               );
             },
-          ),
-        ),
-      ],
+          
     );
   }
 }
